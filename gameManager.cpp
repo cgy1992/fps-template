@@ -147,7 +147,7 @@ void GameManager::updateCurrentChunks()
         if(allSeenChunks.count(index) == 0) // if the chunk has never been seen before
         {
             // Create and add a new Chunk
-            allSeenChunks[index] = std::make_shared<Chunk>(p, chunkSize);
+            allSeenChunks[index] = std::make_shared<Chunk>(p, chunkSize, CHUNK_GROUND_COLOR);
         }
         currentChunks.push_back(allSeenChunks[index]);
     }
