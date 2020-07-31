@@ -2,6 +2,7 @@
 // in a 3D graphics tutorial.
 // The code to switch to 2D drawing mode is from https://www.youtube.com/watch?v=i1mp4zflkYo,
 // a video by The Pentamollis Project
+// The code to enable alpha is from https://www.opengl.org/archives/resources/faq/technical/transparency.htm
 
 
 #include "graphics.h"
@@ -15,8 +16,8 @@ int prevMouseX, prevMouseY;
 
 void init()
 {
-    width = 800;
-    height = 500;
+    width = 1024;
+    height = 512;
     prevMouseX = width/2;
     prevMouseY = height/2;
 }
@@ -30,12 +31,12 @@ void initGL()
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // Set "clearing" or background color
-    glClearColor(1.0f, 1.0f, 0.0f, 1.0f); // Yellow
+    glClearColor(0.5f, 0.7f, 1.0f, 1.0f); // Sky blue
     glEnable(GL_DEPTH_TEST);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     // Initialize the camera where the player is, because during the intro screen,
-    // the camera gets put in a different place and it would be messed up when the
+    // if the camera gets put in a different place, it would be messed up when the
     // game starts if you initialize it to the intro location.
     Point camLoc = manager.getPlayer().getLocation();
     Point camLook = manager.getPlayer().getLookingAt();
@@ -73,7 +74,6 @@ void display()
 
     // Draw in 3d
     manager.draw();
-
 
     // Switch to 2d mode
     // Code from https://www.youtube.com/watch?v=i1mp4zflkYo
@@ -116,10 +116,6 @@ void kbd(unsigned char key, int x, int y)
             break;
         case 'd': manager.setDKey(true);
             break;
-        case 'r': manager.setRKey(true);
-            break;
-        case 'c': manager.setCKey(true);
-            break;
         case 32: manager.setSpacebar(true);
             break;
     }
@@ -139,10 +135,6 @@ void kbu(unsigned char key, int x, int y)
         case 's': manager.setSKey(false);
             break;
         case 'd': manager.setDKey(false);
-            break;
-        case 'r': manager.setRKey(false);
-            break;
-        case 'c': manager.setCKey(false);
             break;
         case 'p' : manager.togglePaused();
             break;
@@ -165,8 +157,8 @@ void cursor(int x, int y)
     prevMouseX = x;
     prevMouseY = y;
 
-    // If the cursor gets close to the edge during the game, put it back in the middle.
-    if(manager.getCurrentStatus() == Playing && (x < 80 || x > width - 80 || y < 80 || y > height - 80))
+    // Keep the cursor in the middle during the game.
+    if(manager.getCurrentStatus() == Playing)
     {
         glutWarpPointer(width/2,height/2);
     }
@@ -187,6 +179,7 @@ void mouse(int button, int state, int x, int y)
         }
         else // Keep arrow when not playing
         {
+            // Make the arrow visible
             glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
             // Check for if the quit button was hit
             if(manager.getCloseWindow())
