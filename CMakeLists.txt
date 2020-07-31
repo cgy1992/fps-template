@@ -26,7 +26,7 @@ file(GLOB SOURCE_FILES
         *.h
         )
 
-add_executable(graphics graphics.h graphics.cpp graphics.cpp graphics.h structs.h mathHelper.cpp mathHelper.h gameManager.cpp gameManager.h chunk.cpp chunk.h)
+add_executable(graphics graphics.h graphics.cpp graphics.cpp graphics.h structs.h mathHelper.cpp mathHelper.h gameManager.cpp gameManager.h chunk.cpp chunk.h player.cpp player.h button.cpp button.h)
 add_executable(testing testing.cpp testing.cpp structs.h mathHelper.cpp mathHelper.h)
 
 if (WIN32)
