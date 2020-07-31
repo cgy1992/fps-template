@@ -90,7 +90,7 @@ void Button::setIsHighlighted(bool input)
 void Button::draw() const
 {
     // Draw the text first
-    setColor(textColor);
+    setGLColor(textColor);
     glRasterPos2i(centerX - (4*text.length()), centerY - 4);
     for(const char &letter : text)
     {
@@ -102,11 +102,11 @@ void Button::draw() const
     // Set the color for the Button background
     if(isHighlighted)
     {
-        setColor(highlightedColor);
+        setGLColor(highlightedColor);
     }
     else
     {
-        setColor(backgroundColor);
+        setGLColor(backgroundColor);
     }
 
     double curTheta, curX, curY;

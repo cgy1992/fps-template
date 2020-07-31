@@ -46,7 +46,7 @@ int Chunk::getChunkID()
 
 void Chunk::draw() const
 {
-    setColor(groundColor);
+    setGLColor(groundColor);
     glBegin(GL_QUADS);
     glVertex3f(center.x - sideLength/2, 0, center.z - sideLength/2);
     glVertex3f(center.x + sideLength/2, 0, center.z - sideLength/2);

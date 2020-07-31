@@ -47,10 +47,10 @@ void timer(int dummy);
 void mouse(int button, int state, int x, int y);
 
 // Shortcut functions
-void drawPoint(Point p);          // Calls glVertex3f
-void drawPoint2D(Point p);        // Calls glVertex2f on x and y
-void setColor(RGBAcolor color);   // Calls glColor4f
-void cull();                      // glEnable(GL_CULL_FACE)
-void unCull();                    // glDisable(GL_CULL_FACE)
+void drawPoint(Point p);            // Calls glVertex3f
+void drawPoint2D(Point p);          // Calls glVertex2f on x and y
+void setGLColor(RGBAcolor color);   // Calls glColor4f
+void cull();                        // glEnable(GL_CULL_FACE)
+void unCull();                      // glDisable(GL_CULL_FACE)
 
 #endif /* graphics_h */

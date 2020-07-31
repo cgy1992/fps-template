@@ -264,7 +264,7 @@ void drawPoint2D(Point p)
 {
     glVertex2f(p.x, p.y);
 }
-void setColor(RGBAcolor color)
+void setGLColor(RGBAcolor color)
 {
     glColor4f(color.r, color.g, color.b, color.a);
 }
