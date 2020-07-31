@@ -138,3 +138,19 @@ std::vector<Point2D> getChunkTopLeftCornersAroundPoint(Point2D p, int radius)
     }
     return result;
 }
+
+std::vector<int> getChunkIDsAroundPoint(int chunkID, int radius)
+{
+    return getChunkIDsAroundPoint(chunkIDtoPoint2D(chunkID), radius);
+}
+std::vector<Point2D> getChunkTopLeftCornersAroundPoint(int chunkID, int radius)
+{
+    return getChunkTopLeftCornersAroundPoint(chunkIDtoPoint2D(chunkID), radius);
+}
+
+int getChunkIDContainingPoint(Point p, int chunkSize)
+{
+    int x = floor(p.x / chunkSize);
+    int z = floor(p.z / chunkSize);
+    return point2DtoChunkID({x, z});
+}

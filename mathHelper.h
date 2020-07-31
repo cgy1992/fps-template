@@ -36,4 +36,9 @@ double distance3d(Point p1, Point p2);
 // using the taxicab metric
 std::vector<int> getChunkIDsAroundPoint(Point2D p, int radius);
 std::vector<Point2D> getChunkTopLeftCornersAroundPoint(Point2D p, int radius);
+// Wrappers
+std::vector<int> getChunkIDsAroundPoint(int chunkID, int radius);
+std::vector<Point2D> getChunkTopLeftCornersAroundPoint(int chunkID, int radius);
+
+int getChunkIDContainingPoint(Point p, int chunkSize);
 #endif //FPS_TEMPLATE_MATHHELPER_H
