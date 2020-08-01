@@ -32,6 +32,9 @@ private:
 
     // Keep the Player restricted to a square around (0,0)
     int maxDistanceFromSpawn;
+
+    // Can't look perfectly vertically or it will glitch
+    double VERTICAL_LIMIT = 0.01;
 public:
     Player();
     Player(Point inputLocation, Point inputLookingAt, Point inputUp,

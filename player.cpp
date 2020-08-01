@@ -267,13 +267,13 @@ void Player::updateAngles(double theta)
 
     double verticalAmount = sensitivity * sin(theta);
     yAngle -= verticalAmount; // negative sign since Glut's mouse functions treat +y as down
-    if(yAngle > PI/2 - 0.01)
+    if(yAngle > PI/2 - VERTICAL_LIMIT)
     {
-        yAngle = PI/2 - 0.01;
+        yAngle = PI/2 - VERTICAL_LIMIT;
     }
-    else if(yAngle < -PI/2 + 0.01)
+    else if(yAngle < -PI/2 + VERTICAL_LIMIT)
     {
-        yAngle = -PI/2 + 0.01;
+        yAngle = -PI/2 + VERTICAL_LIMIT;
     }
 }
 
