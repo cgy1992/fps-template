@@ -6,24 +6,35 @@ Player::Player()
     lookingAt = {0, 10, -10};
     up = {0, 20, 0};
     speed = 2;
+    velocity = {0, 0, 0};
     sensitivity = 0.1;
     height = 20;
     radius = 5;
+    initializeAngles();
     initializeSphericalDirection();
     maxDistanceFromSpawn = 5120;
+    isGrounded = true;
+    gravity = -0.1;
+    jumpAmount = 10;
 }
 Player::Player(Point inputLocation, Point inputLookingAt, Point inputUp,
-double inputSpeed, double inputSensitivity, double inputHeight, double inputRadius, int inputMaxDistanceFromSpawn)
+double inputSpeed, double inputSensitivity, double inputHeight, double inputRadius, int inputMaxDistanceFromSpawn,
+double inputGravity, double inputJumpAmount)
 {
     location = inputLocation;
     lookingAt = inputLookingAt;
     up = inputUp;
     speed = inputSpeed;
+    velocity = {0, 0, 0};
     sensitivity = inputSensitivity;
     height = inputHeight;
     radius = inputRadius;
+    initializeAngles();
     initializeSphericalDirection();
     maxDistanceFromSpawn = inputMaxDistanceFromSpawn;
+    isGrounded = true;
+    gravity = inputGravity;
+    jumpAmount = inputJumpAmount;
 }
 
 void Player::initializeAngles()

@@ -36,7 +36,7 @@ public:
     Player();
     Player(Point inputLocation, Point inputLookingAt, Point inputUp,
             double inputSpeed, double inputSensitivity, double inputHeight, double inputRadius,
-            int inputMaxDistanceFromSpawn);
+            int inputMaxDistanceFromSpawn, double inputGravity, double inputJumpAmount);
 
     void initializeAngles();
     void initializeSphericalDirection();
