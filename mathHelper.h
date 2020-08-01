@@ -21,15 +21,12 @@ int isqrt(int n);
 Point2D chunkIDtoPoint2D(int n);
 int point2DtoChunkID(Point2D p);
 
-// Returns the distance in the xz plane
-double distance2d(Point p1, Point p2);
-
+// Euclidean distance
 double distanceFormula(double x1, double y1, double x2, double y2);
 
-// Euclidean distance
-double distance(Point2D p1, Point2D p2);
-
-double distance3d(Point p1, Point p2);
+// Returns the distance in the xz plane, ignoring the y-coordinate
+// (calls distanceFormula())
+double distance2d(Point p1, Point p2);
 
 
 // Returns the ints corresponding to to all chunks that are within radius of this one,
