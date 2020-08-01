@@ -157,8 +157,8 @@ void cursor(int x, int y)
     prevMouseX = x;
     prevMouseY = y;
 
-    // Keep the cursor in the middle during the game.
-    if(manager.getCurrentStatus() == Playing)
+    // If the cursor gets close to the edge during the game, put it back in the middle.
+    if(manager.getCurrentStatus() == Playing && (x < 120 || x > width - 120 || y < 120 || y > height - 120))
     {
         glutWarpPointer(width/2,height/2);
     }
