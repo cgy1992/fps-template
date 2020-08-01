@@ -37,7 +37,7 @@ void GameManager::initializePlayer()
     Point playerStartLook = {0, PLAYER_HEIGHT/2, -10};
     Point playerStartUp = {0, PLAYER_HEIGHT, 0};
     player = Player(playerStartLoc, playerStartLook, playerStartUp, PLAYER_SPEED, MOUSE_SENSITIVITY,
-                    PLAYER_HEIGHT, PLAYER_RADIUS, MAX_DISTANCE_FROM_SPAWN);
+                    PLAYER_HEIGHT, PLAYER_RADIUS, MAX_DISTANCE_FROM_SPAWN, GRAVITY, PLAYER_JUMP_AMOUNT);
     currentPlayerChunkID = getChunkIDContainingPoint(player.getLocation(), chunkSize);
 }
 
@@ -147,7 +147,16 @@ void GameManager::updateCurrentChunks()
         if(allSeenChunks.count(index) == 0) // if the chunk has never been seen before
         {
             // Create and add a new Chunk
-            allSeenChunks[index] = std::make_shared<Chunk>(p, chunkSize, CHUNK_GROUND_COLOR);
+            RGBAcolor newColor;
+            if((p.x + p.z) % 2 == 0)
+            {
+                newColor = CHUNK_GROUND_COLOR;
+            }
+            else
+            {
+                newColor = {0, 0.6, 0, 1};
+            }
+            allSeenChunks[index] = std::make_shared<Chunk>(p, chunkSize, newColor);
         }
         currentChunks.push_back(allSeenChunks[index]);
     }
@@ -324,13 +333,15 @@ void GameManager::drawCursor() const
     setGLColor(CURSOR_COLOR);
     glBegin(GL_QUADS);    // Draw a + shape with two quads
     glVertex2f(screenWidth/2 - 5, screenHeight/2 + 2);
-    glVertex2f(screenWidth/2 + 5, screenHeight/2 + 2);
-    glVertex2f(screenWidth/2 + 5, screenHeight/2 - 2);
     glVertex2f(screenWidth/2 - 5, screenHeight/2 - 2);
+    glVertex2f(screenWidth/2 + 5, screenHeight/2 - 2);
+    glVertex2f(screenWidth/2 + 5, screenHeight/2 + 2);
+
+
     glVertex2f(screenWidth/2 - 2, screenHeight/2 + 5);
-    glVertex2f(screenWidth/2 + 2, screenHeight/2 + 5);
-    glVertex2f(screenWidth/2 + 2, screenHeight/2 - 5);
     glVertex2f(screenWidth/2 - 2, screenHeight/2 - 5);
+    glVertex2f(screenWidth/2 + 2, screenHeight/2 - 5);
+    glVertex2f(screenWidth/2 + 2, screenHeight/2 + 5);
     glEnd();
 }
 
