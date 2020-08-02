@@ -60,7 +60,7 @@ private:
     RGBAcolor QUIT_BUTTON_COLOR_H = {1.0, 0.2, 0.0, 1.0}; // Lighter Red
     RGBAcolor BUTTON_TEXT_COLOR = {1.0,1.0,1.0,1.0};      // White
     RGBAcolor CURSOR_COLOR = {0.3, 0.3, 0.3, 1.0};        // Dark Gray
-    RGBAcolor BLACK = {0.0, 0.0, 0.0, 0.0};
+    RGBAcolor BLACK = {0.0, 0.0, 0.0, 1.0};
 public:
     GameManager();
     GameManager(int inputScreenWidth, int inputScreenHeight, int inputChunkSize, int inputRenderRadius);
