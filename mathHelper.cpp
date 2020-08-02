@@ -99,7 +99,7 @@ std::vector<int> getChunkIDsAroundPoint(Point2D p, int radius)
 {
     std::vector<int> result;
 
-    // Start at the top of the diamond and work down from there
+    // Start at the bottom of the diamond and work up from there
     for(int b = p.z + radius; b >= p.z - radius; b--)
     {
         int distanceFromZ = abs(b - p.z);
@@ -115,7 +115,7 @@ std::vector<Point2D> getChunkTopLeftCornersAroundPoint(Point2D p, int radius)
 {
     std::vector<Point2D> result;
 
-    // Start at the top of the diamond and work down from there
+    // Start at the bottom of the diamond and work up from there
     for(int b = p.z + radius; b >= p.z - radius; b--)
     {
         int distanceFromZ = abs(b - p.z);
