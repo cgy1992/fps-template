@@ -224,7 +224,7 @@ int main(int argc, char** argv)
     glutInitWindowSize((int)width, (int)height);
     glutInitWindowPosition(100, 100); // Position the window's initial top-left corner
     /* create the window and store the handle to it */
-    wd = glutCreateWindow("Prime City" /* title */ );
+    wd = glutCreateWindow("First-Person Shooter" /* title */ );
 
     // Register callback handler for window re-paint event
     glutDisplayFunc(display);
