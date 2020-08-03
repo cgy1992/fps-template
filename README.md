@@ -10,3 +10,5 @@ include/ and lib/ folders from freeglut into there, and copy
 freeglut.dll from freeglut/bin/ into the cmake-build-debug/ folder.
 
 If you are not on windows, maybe it will just work.
+
+![](/screenshot.png)
